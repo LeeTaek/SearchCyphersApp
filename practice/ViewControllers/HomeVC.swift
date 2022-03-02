@@ -245,3 +245,5 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
 }
 
 
+
+
