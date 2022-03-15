@@ -12,7 +12,7 @@
 		741A1CED27C4F169002484FA /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741A1CEC27C4F169002484FA /* constants.swift */; };
 		741A1CEF27C4F289002484FA /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741A1CEE27C4F289002484FA /* BaseVC.swift */; };
 		741A1CF127C4FE93002484FA /* MyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741A1CF027C4FE93002484FA /* MyError.swift */; };
-		741A1CF427C4FEB4002484FA /* userInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741A1CF327C4FEB4002484FA /* userInfo.swift */; };
+		741A1CF427C4FEB4002484FA /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741A1CF327C4FEB4002484FA /* UserInfo.swift */; };
 		741A1CF727C4FEE1002484FA /* MyAlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741A1CF627C4FEE1002484FA /* MyAlamofireManager.swift */; };
 		741A1CF927C4FF08002484FA /* MyLoger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741A1CF827C4FF08002484FA /* MyLoger.swift */; };
 		741A1CFB27C4FF22002484FA /* BaseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741A1CFA27C4FF22002484FA /* BaseInterceptor.swift */; };
@@ -29,7 +29,8 @@
 		744D1A0A27C4D80600C5FA2A /* practiceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D1A0927C4D80600C5FA2A /* practiceUITests.swift */; };
 		744D1A0C27C4D80600C5FA2A /* practiceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D1A0B27C4D80600C5FA2A /* practiceUITestsLaunchTests.swift */; };
 		744D1A1927C4DB2400C5FA2A /* UserListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D1A1827C4DB2400C5FA2A /* UserListVC.swift */; };
-		744D1A1B27C4DB5500C5FA2A /* PhotoCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D1A1A27C4DB5500C5FA2A /* PhotoCollectionVC.swift */; };
+		744D1A1B27C4DB5500C5FA2A /* PlayerInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D1A1A27C4DB5500C5FA2A /* PlayerInfoVC.swift */; };
+		74FEE59327E08B1E006C1624 /* playterInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FEE59227E08B1E006C1624 /* playterInfoCell.swift */; };
 		F0DA8A8A30BF05586C0F2A9B /* Pods_practice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C4DD058841881E46C47D5E0 /* Pods_practice.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +59,7 @@
 		741A1CEC27C4F169002484FA /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		741A1CEE27C4F289002484FA /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		741A1CF027C4FE93002484FA /* MyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyError.swift; sourceTree = "<group>"; };
-		741A1CF327C4FEB4002484FA /* userInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userInfo.swift; sourceTree = "<group>"; };
+		741A1CF327C4FEB4002484FA /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		741A1CF627C4FEE1002484FA /* MyAlamofireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlamofireManager.swift; sourceTree = "<group>"; };
 		741A1CF827C4FF08002484FA /* MyLoger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLoger.swift; sourceTree = "<group>"; };
 		741A1CFA27C4FF22002484FA /* BaseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInterceptor.swift; sourceTree = "<group>"; };
@@ -79,7 +80,8 @@
 		744D1A0927C4D80600C5FA2A /* practiceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = practiceUITests.swift; sourceTree = "<group>"; };
 		744D1A0B27C4D80600C5FA2A /* practiceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = practiceUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		744D1A1827C4DB2400C5FA2A /* UserListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListVC.swift; sourceTree = "<group>"; };
-		744D1A1A27C4DB5500C5FA2A /* PhotoCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionVC.swift; sourceTree = "<group>"; };
+		744D1A1A27C4DB5500C5FA2A /* PlayerInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoVC.swift; sourceTree = "<group>"; };
+		74FEE59227E08B1E006C1624 /* playterInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playterInfoCell.swift; sourceTree = "<group>"; };
 		A90126E3AB8DB5672F2E20FF /* Pods-practice-practiceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-practice-practiceUITests.release.xcconfig"; path = "Target Support Files/Pods-practice-practiceUITests/Pods-practice-practiceUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AC77B8DFFD6DB9754C426D8D /* Pods-practiceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-practiceTests.release.xcconfig"; path = "Target Support Files/Pods-practiceTests/Pods-practiceTests.release.xcconfig"; sourceTree = "<group>"; };
 		CD986B7EC92DBEF48A1C66B4 /* Pods_practiceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_practiceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,27 +133,21 @@
 		741A1CEA27C4E58C002484FA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				741A1CEE27C4F289002484FA /* BaseVC.swift */,
 				744D19E927C4D80500C5FA2A /* HomeVC.swift */,
 				744D1A1827C4DB2400C5FA2A /* UserListVC.swift */,
-				741A1CEE27C4F289002484FA /* BaseVC.swift */,
-				744D1A1A27C4DB5500C5FA2A /* PhotoCollectionVC.swift */,
+				744D1A1A27C4DB5500C5FA2A /* PlayerInfoVC.swift */,
+				74FEE59227E08B1E006C1624 /* playterInfoCell.swift */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		741A1CEB27C4F158002484FA /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				741A1CEC27C4F169002484FA /* constants.swift */,
-				741A1CF027C4FE93002484FA /* MyError.swift */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		741A1CF227C4FEA6002484FA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				741A1CF327C4FEB4002484FA /* userInfo.swift */,
+				741A1CF327C4FEB4002484FA /* UserInfo.swift */,
+				741A1CEC27C4F169002484FA /* constants.swift */,
+				741A1CF027C4FE93002484FA /* MyError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -195,7 +191,6 @@
 			children = (
 				741A1CF527C4FECC002484FA /* API */,
 				741A1CF227C4FEA6002484FA /* Model */,
-				741A1CEB27C4F158002484FA /* Utils */,
 				741A1CEA27C4E58C002484FA /* ViewControllers */,
 				744D19E527C4D80500C5FA2A /* AppDelegate.swift */,
 				744D19E727C4D80500C5FA2A /* SceneDelegate.swift */,
@@ -477,7 +472,7 @@
 				741A1CF727C4FEE1002484FA /* MyAlamofireManager.swift in Sources */,
 				744D1A1927C4DB2400C5FA2A /* UserListVC.swift in Sources */,
 				741A1CFD27C4FF3A002484FA /* MyApiStatusLogger.swift in Sources */,
-				744D1A1B27C4DB5500C5FA2A /* PhotoCollectionVC.swift in Sources */,
+				744D1A1B27C4DB5500C5FA2A /* PlayerInfoVC.swift in Sources */,
 				744D19F027C4D80500C5FA2A /* practice.xcdatamodeld in Sources */,
 				741A1CEF27C4F289002484FA /* BaseVC.swift in Sources */,
 				741A1CED27C4F169002484FA /* constants.swift in Sources */,
@@ -487,7 +482,8 @@
 				741A1CF927C4FF08002484FA /* MyLoger.swift in Sources */,
 				741A1CF127C4FE93002484FA /* MyError.swift in Sources */,
 				744D19E627C4D80500C5FA2A /* AppDelegate.swift in Sources */,
-				741A1CF427C4FEB4002484FA /* userInfo.swift in Sources */,
+				74FEE59327E08B1E006C1624 /* playterInfoCell.swift in Sources */,
+				741A1CF427C4FEB4002484FA /* UserInfo.swift in Sources */,
 				744D19E827C4D80500C5FA2A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

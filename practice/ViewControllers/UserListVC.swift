@@ -24,7 +24,7 @@ class UserListVC : BaseVC {
 
              switch result {
              case .success(let fetchedPlayer):
-                 print("HomeVC - getPlayers.success - fetchedPlayer.count : \(fetchedPlayer.count)")
+                 print("HomeVC - getPlayers.success - fetchedPlayer.count : \(fetchedPlayer)")
              case .failure(let error):
                  print("HomeVC - getPlayers.failure = error : \(error.rawValue)")
              }

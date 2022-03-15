@@ -7,7 +7,6 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
 
 final class MyAlamofireManager {
     
@@ -33,54 +32,73 @@ final class MyAlamofireManager {
         session = Session(interceptor: interceptors, eventMonitors: monitors)
     }
     
+    
+    
+    
 
-    func getUserInfo(searchTerm userInput: String, completion: @escaping (Result<[userInfo], MyError>) -> Void) {
+    func getUserInfo(searchTerm userInput: String, completion: @escaping (Result<PlayerInfo, MyError>) -> Void) {
         
         print("MyAlMyAlamofireManager - getUserInfo() called userInput : \(userInput)")
         
         self.session
-            .request(MySearchRouter.searchPlayers(term: userInput))
+            .request(MySearchRouter.searchPlayerId(term: userInput))
             .validate(statusCode: 200...400)         // 200-400까지만 허용하고 401부터는 에러가 뜸. 에러일 경우 baseRetry가 뜸
-            .responseJSON(completionHandler:{
-                response in
+            .responseJSON(completionHandler:{ response in
                 
-                guard let responseValue = response.value else {return}
-                
-                    var player = [userInfo]()
-                    let responseJson = JSON(responseValue)
-                    let jsonArray = responseJson["rows"]
+                switch response.result {
                     
-                    print("JsonArray count : \(jsonArray.count)")
-                    
-                    
-                    for (index, subJson): (String, JSON) in jsonArray {
+                case .success(let res) :
+                    do {
                         
-                        print("index : \(index), subJson : \(subJson)")
+                        let JsonData = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
                         
-                        // 데이터 파싱
-                        guard let playerId = subJson["playerId"].string,
-                              let nickname = subJson["nickname"].string else {return}
+                        let user = try JSONDecoder().decode(UserInfo.self, from: JsonData)
                         
-                        let grade = subJson["grade"].intValue
-                        
-                        let userInfoItem = userInfo(playerId: playerId, nickname: nickname, grade: grade)
-                        
-                        // 배열에 넣고
-                        player.append(userInfoItem)
-                        
-                        if player.count > 0 {
-                            completion(.success(player))
-                            print(player)
+                        if !user.rows.isEmpty {
+                            completion(.success(user.rows.first!))
                         } else {
-                            completion(.failure(.noContent))
+                            completion(.failure(.noPlayer))
                         }
                         
+                    } catch {
+                        print(error)
+                        completion(.failure(.noContent))
+                    }
+                case .failure(let err):
+                    print(err.localizedDescription)
                 }
-                
-                print(player)
-        })
-     
+            })
+        }
+    
+    
+    
+    func getMatchInfo(searchterm userInput: String, gameTypeID : String ,completion: @escaping (Result<MatchInfo, MyError>) -> Void) {
+        print("MyAlamofireManager - getMatchInfo() called ")
         
+        self.session
+            .request(MySearchRouter.searchMatches(term: userInput, gameType: gameTypeID))
+            .validate().validate(statusCode: 200...400)
+            .responseJSON(completionHandler: {response in
+                
+                switch response.result {
+                case .success(let res) :
+                    do {
+                        let JsonData = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
+                        
+                        let matchingData = try JSONDecoder().decode(MatchInfo.self, from: JsonData)
+                        
+                        completion(.success(matchingData))
+                        
+                        
+                    } catch {
+                        print(error)
+                        completion(.failure(.noMatcingRecord))
+                    }
+                    
+                case .failure(let err) :
+                    print(err.localizedDescription)
+                }
+            })
     }
     
     

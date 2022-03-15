@@ -8,7 +8,6 @@
 import UIKit
 import Toast_Swift
 import Alamofire
-import SwiftyJSON
 
 class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate {
 
@@ -52,9 +51,9 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
         
             nextVC.vcTitle = userInputValue
             
-        case SEGUE_ID.PHOTO_COLLECTIONC_VC:
+        case SEGUE_ID.PLAYER_INFO_VC:
             // 다음 화면의 뷰컨트롤러를 가져온다.
-            let nextVC = segue.destination as! PhotoCollectionVC
+            let nextVC = segue.destination as! PlayerInfoVC
             
             guard let userInputValue = self.searchBar.text else { return }
         
@@ -103,14 +102,14 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
         
         switch searchFilterSegment.selectedSegmentIndex {
         case 0:
-            print("사진 화면으로 이동")
-            segueId = "goToPhotoCollectionVC"
+            print("플레이어 전적 화면으로 이동")
+            segueId = "goToPlayerInfoVC"
         case 1:
             print("사용자 화면으로 이동")
             segueId = "goToUserListVC"
         default:
             print("defalut")
-            segueId = "goToPhotoCollectionVC"
+            segueId = "goToPlayerInfoVC"
         }
         
         // 화면 이동
@@ -160,11 +159,11 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
         
         switch sender.selectedSegmentIndex {
         case 0:
-            searchBarTitle = "사진 키워드"
+            searchBarTitle = "닉네임 "
         case 1:
-            searchBarTitle = "사용자 이름"
+            searchBarTitle = "캐릭터 이름"
         default:
-            searchBarTitle = "사진 키워드"
+            searchBarTitle = "닉네임"
         }
         
         self.searchBar.placeholder = searchBarTitle + "입력"
@@ -218,10 +217,10 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
 //        }
         
         // 위와 같은 구문
-        if (inputTextCount >= 12) {
-            self.view.makeToast("🙃 12자까지만 입력 가능합니다", duration: 2.0, position: .top)
+        if (inputTextCount >= 8) {
+            self.view.makeToast("🙃 8자까지만 입력 가능합니다", duration: 2.0, position: .top)
         }
-        return inputTextCount <= 12
+        return inputTextCount <= 8
     }
     
     //MARK: - UIGestureRecognizerDelegate

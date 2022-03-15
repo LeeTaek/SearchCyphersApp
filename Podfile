@@ -17,6 +17,6 @@ target 'practice' do
   end
  pod 'Toast-Swift', '~> 5.0.0'
  pod 'Alamofire', '~> 5.5'
- pod 'SwiftyJSON', '~> 4.0'
+ pod 'Kingfisher', '~> 7.0'
 
 end
