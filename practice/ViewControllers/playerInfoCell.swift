@@ -33,11 +33,9 @@ class playerInfoCell: UITableViewCell {
     @IBOutlet weak var attributeImage3: UIImageView!
     @IBOutlet weak var attributeName3: UILabel!
     
-    
-    @IBOutlet weak var DetailInfo: UIButton!
-    
+  
     
     
-    
+
     
 }

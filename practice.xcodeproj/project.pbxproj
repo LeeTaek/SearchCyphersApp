@@ -18,6 +18,8 @@
 		741A1CFB27C4FF22002484FA /* BaseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741A1CFA27C4FF22002484FA /* BaseInterceptor.swift */; };
 		741A1CFD27C4FF3A002484FA /* MyApiStatusLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741A1CFC27C4FF3A002484FA /* MyApiStatusLogger.swift */; };
 		741A1CFF27C4FF53002484FA /* MySearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741A1CFE27C4FF53002484FA /* MySearchRouter.swift */; };
+		7423593627E164AC004C6BAA /* DetailPlayInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7423593527E164AC004C6BAA /* DetailPlayInfoVC.swift */; };
+		7423593827E1AAF1004C6BAA /* DetailPlayInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7423593727E1AAF1004C6BAA /* DetailPlayInfoTableViewCell.swift */; };
 		744D19E627C4D80500C5FA2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D19E527C4D80500C5FA2A /* AppDelegate.swift */; };
 		744D19E827C4D80500C5FA2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D19E727C4D80500C5FA2A /* SceneDelegate.swift */; };
 		744D19EA27C4D80500C5FA2A /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D19E927C4D80500C5FA2A /* HomeVC.swift */; };
@@ -30,7 +32,7 @@
 		744D1A0C27C4D80600C5FA2A /* practiceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D1A0B27C4D80600C5FA2A /* practiceUITestsLaunchTests.swift */; };
 		744D1A1927C4DB2400C5FA2A /* UserListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D1A1827C4DB2400C5FA2A /* UserListVC.swift */; };
 		744D1A1B27C4DB5500C5FA2A /* PlayerInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D1A1A27C4DB5500C5FA2A /* PlayerInfoVC.swift */; };
-		74FEE59327E08B1E006C1624 /* playterInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FEE59227E08B1E006C1624 /* playterInfoCell.swift */; };
+		74FEE59327E08B1E006C1624 /* playerInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FEE59227E08B1E006C1624 /* playerInfoCell.swift */; };
 		F0DA8A8A30BF05586C0F2A9B /* Pods_practice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C4DD058841881E46C47D5E0 /* Pods_practice.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +67,8 @@
 		741A1CFA27C4FF22002484FA /* BaseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInterceptor.swift; sourceTree = "<group>"; };
 		741A1CFC27C4FF3A002484FA /* MyApiStatusLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyApiStatusLogger.swift; sourceTree = "<group>"; };
 		741A1CFE27C4FF53002484FA /* MySearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySearchRouter.swift; sourceTree = "<group>"; };
+		7423593527E164AC004C6BAA /* DetailPlayInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPlayInfoVC.swift; sourceTree = "<group>"; };
+		7423593727E1AAF1004C6BAA /* DetailPlayInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPlayInfoTableViewCell.swift; sourceTree = "<group>"; };
 		744D19E227C4D80500C5FA2A /* practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = practice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		744D19E527C4D80500C5FA2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		744D19E727C4D80500C5FA2A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,7 +85,7 @@
 		744D1A0B27C4D80600C5FA2A /* practiceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = practiceUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		744D1A1827C4DB2400C5FA2A /* UserListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListVC.swift; sourceTree = "<group>"; };
 		744D1A1A27C4DB5500C5FA2A /* PlayerInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoVC.swift; sourceTree = "<group>"; };
-		74FEE59227E08B1E006C1624 /* playterInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playterInfoCell.swift; sourceTree = "<group>"; };
+		74FEE59227E08B1E006C1624 /* playerInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerInfoCell.swift; sourceTree = "<group>"; };
 		A90126E3AB8DB5672F2E20FF /* Pods-practice-practiceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-practice-practiceUITests.release.xcconfig"; path = "Target Support Files/Pods-practice-practiceUITests/Pods-practice-practiceUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AC77B8DFFD6DB9754C426D8D /* Pods-practiceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-practiceTests.release.xcconfig"; path = "Target Support Files/Pods-practiceTests/Pods-practiceTests.release.xcconfig"; sourceTree = "<group>"; };
 		CD986B7EC92DBEF48A1C66B4 /* Pods_practiceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_practiceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,7 +141,9 @@
 				744D19E927C4D80500C5FA2A /* HomeVC.swift */,
 				744D1A1827C4DB2400C5FA2A /* UserListVC.swift */,
 				744D1A1A27C4DB5500C5FA2A /* PlayerInfoVC.swift */,
-				74FEE59227E08B1E006C1624 /* playterInfoCell.swift */,
+				74FEE59227E08B1E006C1624 /* playerInfoCell.swift */,
+				7423593527E164AC004C6BAA /* DetailPlayInfoVC.swift */,
+				7423593727E1AAF1004C6BAA /* DetailPlayInfoTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -472,6 +478,7 @@
 				741A1CF727C4FEE1002484FA /* MyAlamofireManager.swift in Sources */,
 				744D1A1927C4DB2400C5FA2A /* UserListVC.swift in Sources */,
 				741A1CFD27C4FF3A002484FA /* MyApiStatusLogger.swift in Sources */,
+				7423593627E164AC004C6BAA /* DetailPlayInfoVC.swift in Sources */,
 				744D1A1B27C4DB5500C5FA2A /* PlayerInfoVC.swift in Sources */,
 				744D19F027C4D80500C5FA2A /* practice.xcdatamodeld in Sources */,
 				741A1CEF27C4F289002484FA /* BaseVC.swift in Sources */,
@@ -482,8 +489,9 @@
 				741A1CF927C4FF08002484FA /* MyLoger.swift in Sources */,
 				741A1CF127C4FE93002484FA /* MyError.swift in Sources */,
 				744D19E627C4D80500C5FA2A /* AppDelegate.swift in Sources */,
-				74FEE59327E08B1E006C1624 /* playterInfoCell.swift in Sources */,
+				74FEE59327E08B1E006C1624 /* playerInfoCell.swift in Sources */,
 				741A1CF427C4FEB4002484FA /* UserInfo.swift in Sources */,
+				7423593827E1AAF1004C6BAA /* DetailPlayInfoTableViewCell.swift in Sources */,
 				744D19E827C4D80500C5FA2A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

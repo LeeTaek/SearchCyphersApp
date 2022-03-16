@@ -19,8 +19,9 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var searchIndicator: UIActivityIndicatorView!
 
-    var keyboardDismissTabGesture : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: nil)
+    var keyboardDismissTabGesture : UITapGestureRecognizer = UITapGestureRecognizer(target: HomeVC.self, action: nil)
    
+    
     //MARK: - override method
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,7 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
     //MARK: - 값을 다음 화면으로 넘김
     // 다른 화면으로 넘어가기 전에 준비한다.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("HomeVC - prepare() called / segue.identifier : \(segue.identifier)")
+        print("HomeVC - prepare() called / segue.identifier : \(String(describing: segue.identifier))")
     
         switch segue.identifier {
         case SEGUE_ID.USER_ID_VC:

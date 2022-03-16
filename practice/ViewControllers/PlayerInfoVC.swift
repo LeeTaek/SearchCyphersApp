@@ -13,10 +13,9 @@ class PlayerInfoVC: BaseVC {
     
     @IBOutlet weak var PlayerInfoTableView: UITableView!
     
-    
     var matchInfo : MatchInfo?
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         print("PhotoCollectionVC - viewDidLoad() called")
@@ -77,6 +76,20 @@ class PlayerInfoVC: BaseVC {
             }
     }
     
+    
+    // 다음 VC로 matchDetailInfo의 정보를 넘김
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let nextVC = segue.destination as! DetailPlayInfoVC
+        
+        guard let hasMatchData = matchDetailInfo else { return }
+        
+        print("playerInfoVC - prepare() matchDetailInfo : \(hasMatchData)")
+
+        
+        nextVC.matchDetailInfo = hasMatchData
+        nextVC.gameTypeId = matchInfo?.matches.gameTypeID ?? ""
+    }
 }
 
 
@@ -88,14 +101,25 @@ extension PlayerInfoVC : UITableViewDelegate, UITableViewDataSource {
         return matchInfo?.matches.rows.count ?? 0
     }
     
+    // 셀의 높이를 컨텐츠 크기에 따라 설정
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension   // 컨텐츠 크기에 따라 설정.
+
+    }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "playerInfoCell", for: indexPath) as! playerInfoCell
     
         
-        guard let hasMatchinfo = matchInfo else { return cell }
+        guard let hasData = matchInfo else { return cell }
+    
+        let hasMatchinfo = hasData.matches.rows[indexPath.row]
         
-        switch hasMatchinfo.matches.gameTypeID {
+        
+        // 셀에 채울 내용
+        switch hasData.matches.gameTypeID {
         case "rating" :
             cell.gameTypeId.text = "공식전"
             
@@ -106,41 +130,57 @@ extension PlayerInfoVC : UITableViewDelegate, UITableViewDataSource {
             cell.gameTypeId.text = "일반전"
         }
         
-        cell.map.text = hasMatchinfo.matches.rows[indexPath.row].map.name
-        cell.date.text = hasMatchinfo.matches.date.start
-        cell.characterName.text = hasMatchinfo.matches.rows[indexPath.row].playInfo.characterName
+        cell.map.text = hasMatchinfo.map.name
+        cell.date.text = hasMatchinfo.date
+        cell.characterName.text = hasMatchinfo.playInfo.characterName
         cell.level.text = "Lv ." +
-        hasMatchinfo.matches.rows[indexPath.row].playInfo.level.description
-        cell.result.text = hasMatchinfo.matches.rows[indexPath.row].playInfo.res.rawValue
-        cell.killCount.text = "Kill \n" +  hasMatchinfo.matches.rows[indexPath.row].playInfo.killCount.description
-        cell.deathCount.text = "Death \n" + hasMatchinfo.matches.rows[indexPath.row].playInfo.deathCount.description
-        cell.assistCount.text = "Assist \n" + hasMatchinfo.matches.rows[indexPath.row].playInfo.assistCount.description
-        cell.position.text = hasMatchinfo.matches.rows[indexPath.row].position.name
-        cell.positionDescription.text = "포지션 기본 버프 : " +  hasMatchinfo.matches.rows[indexPath.row].position.explain.rawValue
+        hasMatchinfo.playInfo.level.description
+        cell.result.text = hasMatchinfo.playInfo.res.rawValue
+        cell.killCount.text = "Kill \n" +  hasMatchinfo.playInfo.killCount.description
+        cell.deathCount.text = "Death \n" + hasMatchinfo.playInfo.deathCount.description
+        cell.assistCount.text = "Assist \n" + hasMatchinfo.playInfo.assistCount.description
+        cell.position.text = hasMatchinfo.position.name
+        cell.positionDescription.text = "포지션 기본 버프 : " +  hasMatchinfo.position.explain.rawValue
         
-        cell.attributeName1.text = hasMatchinfo.matches.rows[indexPath.row].position.attribute[0].name
-        cell.attributeName2.text = hasMatchinfo.matches.rows[indexPath.row].position.attribute[1].name
-        cell.attributeName3.text = hasMatchinfo.matches.rows[indexPath.row].position.attribute[2].name
+        cell.attributeName1.text = hasMatchinfo.position.attribute[0].name
+        cell.attributeName2.text = hasMatchinfo.position.attribute[1].name
+        cell.attributeName3.text = hasMatchinfo.position.attribute[2].name
         
             
-        let characterImageURL = URL(string: API.CHARACTER_IMAGE_URL + hasMatchinfo.matches.rows[indexPath.row].playInfo.characterID)
+        let characterImageURL = URL(string: API.CHARACTER_IMAGE_URL + hasMatchinfo.playInfo.characterID)
         cell.characterImage.kf.setImage(with: characterImageURL)
         
-        let attributeImageURL1 = URL(string: API.ATTRIBUTE_IMAGE_URL + hasMatchinfo.matches.rows[indexPath.row].position.attribute[0].id)
+        let attributeImageURL1 = URL(string: API.ATTRIBUTE_IMAGE_URL + hasMatchinfo.position.attribute[0].id)
         cell.attributeImage1.kf.setImage(with: attributeImageURL1)
         
-        let attributeImageURL2 = URL(string: API.ATTRIBUTE_IMAGE_URL + hasMatchinfo.matches.rows[indexPath.row].position.attribute[1].id)
+        let attributeImageURL2 = URL(string: API.ATTRIBUTE_IMAGE_URL + hasMatchinfo.position.attribute[1].id)
         cell.attributeImage2.kf.setImage(with: attributeImageURL2)
         
-        let attributeImageURL3 = URL(string: API.ATTRIBUTE_IMAGE_URL + hasMatchinfo.matches.rows[indexPath.row].position.attribute[2].id)
+        let attributeImageURL3 = URL(string: API.ATTRIBUTE_IMAGE_URL + hasMatchinfo.position.attribute[2].id)
         cell.attributeImage3.kf.setImage(with: attributeImageURL3)
         
-        
+                
         return cell
 
-            
         }
+
+    
+    // 클릭한 매칭 정보를 matchDetailInfo에 할당 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        
+        // 디테일 뷰로 보낼 매칭 정보
+        guard let  hasData = matchInfo?.matches.rows[indexPath.row] else {return}
+        
+        matchDetailInfo = hasData
+        print("PlayerInfoVC - tableView() indexpath.row : \(indexPath.row), matchDetailInfo : \(matchDetailInfo)")
+        
+        self.performSegue(withIdentifier: "goToDetailPlayInfoVC", sender: self)
+
+    }
+    
       
     
 }
