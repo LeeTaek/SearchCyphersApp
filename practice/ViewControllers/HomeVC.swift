@@ -12,6 +12,7 @@ import Alamofire
 class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate {
 
     
+    
     @IBOutlet weak var searchFilterSegment: UISegmentedControl!
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -29,6 +30,7 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
         print("HomeVC - viewDidLoad() called")
         
         self.config()
+        
     
     }
     
@@ -37,6 +39,10 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
 
     }
 
+    
+    
+    
+    
     
     //MARK: - 값을 다음 화면으로 넘김
     // 다른 화면으로 넘어가기 전에 준비한다.
@@ -172,6 +178,7 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
 //        self.searchBar.resignFirstResponder() // 포커싱 해제
     }
     
+    
     //MARK: - UISearchBar Delegate methods
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         print("HomeVe - searchBarSearchButtonClicked()")
@@ -191,7 +198,7 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
     
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("HomeVC - SearchBar textDidchange() searchtext : \(searchText)")
+//        print("HomeVC - SearchBar textDidchange() searchtext : \(searchText)")
         // 사용자가 입력한 값이 었을때
         if (searchText.isEmpty){
             self.searchButton.isHidden = true
@@ -204,25 +211,21 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
         }
     }
     
+    
+    
     // 글자 입력을 막음
     func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        print("shouleChangeTextIn : \(searchBar.text?.appending(text).count)")
+//        print("shouleChangeTextIn : \(searchBar.text?.appending(text).count)")
         
         let inputTextCount = searchBar.text?.appending(text).count ?? 0
-        
-//        if inputTextCount <= 12 {
-//            return true
-//        } else {
-//            self.view.makeToast("🙃12자까지만 입력 가능합니다", duration: 2.0, position: .top)
-//            return false
-//        }
-        
-        // 위와 같은 구문
+    
         if (inputTextCount >= 8) {
             self.view.makeToast("🙃 8자까지만 입력 가능합니다", duration: 2.0, position: .top)
         }
         return inputTextCount <= 8
     }
+    
+    
     
     //MARK: - UIGestureRecognizerDelegate
     // 모든 터치를 감지함.

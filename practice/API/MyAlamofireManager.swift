@@ -7,8 +7,17 @@
 
 import Foundation
 import Alamofire
+import FirebaseDatabase
+import FirebaseAuth
 
 final class MyAlamofireManager {
+    
+    let database = Database.database().reference()
+  
+    // firebase 업로드용 변수
+//    var countNum = 0
+//    var RankPlayInfo = [Any]()
+
     
     // 싱글턴 적용
     static let shared = MyAlamofireManager()
@@ -30,10 +39,9 @@ final class MyAlamofireManager {
     
     private init() {
         session = Session(interceptor: interceptors, eventMonitors: monitors)
+
+        
     }
-    
-    
-    
     
 
     func getUserInfo(searchTerm userInput: String, completion: @escaping (Result<PlayerInfo, MyError>) -> Void) {
@@ -71,10 +79,11 @@ final class MyAlamofireManager {
         }
     
     
-    
+    //MARK: - getMatchiInfo()
     func getMatchInfo(searchterm userInput: String, gameTypeID : String ,completion: @escaping (Result<MatchInfo, MyError>) -> Void) {
         print("MyAlamofireManager - getMatchInfo() called ")
         
+
         self.session
             .request(MySearchRouter.searchMatches(term: userInput, gameType: gameTypeID))
             .validate().validate(statusCode: 200...400)
@@ -86,12 +95,20 @@ final class MyAlamofireManager {
                         let JsonData = try JSONSerialization.data(withJSONObject: res, options: .prettyPrinted)
                         
                         let matchingData = try JSONDecoder().decode(MatchInfo.self, from: JsonData)
+
+                        //  Firebase 업로드
+//                        self.RankPlayInfo.append(res)
+//                        self.countNum += 1
+//
+//                        if self.countNum == 30 {
+//                            self.database.child("Rank").setValue(self.RankPlayInfo)
+//
+//                        }
                         
                         completion(.success(matchingData))
                         
-                        
                     } catch {
-                        print(error)
+                        print("코더블 에러",error)
                         completion(.failure(.noMatcingRecord))
                     }
                     
@@ -101,5 +118,36 @@ final class MyAlamofireManager {
             })
     }
     
-    
+    // firebase에 업로드 하기 위한 함수
+    func getRankData(completion: @escaping (Result<[RankRow], MyError>) -> Void) {
+        print("MyAlamofireManager - getRankData() called ")
+
+        self.session
+            .request(MySearchRouter.searchRank)
+            .validate(statusCode: 200...400)
+            .responseJSON(completionHandler: { response in
+
+                switch response.result {
+                case .success(let res) :
+                    do{
+                        let JsonData = try JSONSerialization.data(withJSONObject: res,  options: .prettyPrinted)
+
+                        let rankData = try JSONDecoder().decode(Ranking.self, from: JsonData)
+
+                        completion(.success(rankData.rows))
+
+                    } catch {
+                        print(error)
+                        completion(.failure(.noContent))
+                    }
+
+                case .failure(let err) :
+                    print(err.localizedDescription)
+
+
+                }
+        })
+
+    }
 }
+

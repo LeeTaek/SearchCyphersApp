@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		268E26EDA2E6406733626FE3 /* Pods_practice_practiceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29CDFB32FB3B26AE4D4732E0 /* Pods_practice_practiceUITests.framework */; };
 		2E28CDE8888F31D25DC5D0AD /* Pods_practiceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD986B7EC92DBEF48A1C66B4 /* Pods_practiceTests.framework */; };
+		740CEFFC27E2D24100647FC3 /* RankingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740CEFFB27E2D24100647FC3 /* RankingData.swift */; };
+		740CEFFE27E2D2B100647FC3 /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740CEFFD27E2D2B100647FC3 /* Ranking.swift */; };
 		741A1CED27C4F169002484FA /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741A1CEC27C4F169002484FA /* constants.swift */; };
 		741A1CEF27C4F289002484FA /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741A1CEE27C4F289002484FA /* BaseVC.swift */; };
 		741A1CF127C4FE93002484FA /* MyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741A1CF027C4FE93002484FA /* MyError.swift */; };
@@ -20,6 +22,7 @@
 		741A1CFF27C4FF53002484FA /* MySearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741A1CFE27C4FF53002484FA /* MySearchRouter.swift */; };
 		7423593627E164AC004C6BAA /* DetailPlayInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7423593527E164AC004C6BAA /* DetailPlayInfoVC.swift */; };
 		7423593827E1AAF1004C6BAA /* DetailPlayInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7423593727E1AAF1004C6BAA /* DetailPlayInfoTableViewCell.swift */; };
+		74484E4A27E1C94B00E946FA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74484E4927E1C94B00E946FA /* GoogleService-Info.plist */; };
 		744D19E627C4D80500C5FA2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D19E527C4D80500C5FA2A /* AppDelegate.swift */; };
 		744D19E827C4D80500C5FA2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D19E727C4D80500C5FA2A /* SceneDelegate.swift */; };
 		744D19EA27C4D80500C5FA2A /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D19E927C4D80500C5FA2A /* HomeVC.swift */; };
@@ -58,6 +61,8 @@
 		2C4DD058841881E46C47D5E0 /* Pods_practice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_practice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DDCF5AFF985E55A33ACB3A2 /* Pods-practice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-practice.release.xcconfig"; path = "Target Support Files/Pods-practice/Pods-practice.release.xcconfig"; sourceTree = "<group>"; };
 		5538B832B066A852DA7046CE /* Pods-practice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-practice.debug.xcconfig"; path = "Target Support Files/Pods-practice/Pods-practice.debug.xcconfig"; sourceTree = "<group>"; };
+		740CEFFB27E2D24100647FC3 /* RankingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingData.swift; sourceTree = "<group>"; };
+		740CEFFD27E2D2B100647FC3 /* Ranking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ranking.swift; sourceTree = "<group>"; };
 		741A1CEC27C4F169002484FA /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		741A1CEE27C4F289002484FA /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		741A1CF027C4FE93002484FA /* MyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyError.swift; sourceTree = "<group>"; };
@@ -69,6 +74,7 @@
 		741A1CFE27C4FF53002484FA /* MySearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySearchRouter.swift; sourceTree = "<group>"; };
 		7423593527E164AC004C6BAA /* DetailPlayInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPlayInfoVC.swift; sourceTree = "<group>"; };
 		7423593727E1AAF1004C6BAA /* DetailPlayInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPlayInfoTableViewCell.swift; sourceTree = "<group>"; };
+		74484E4927E1C94B00E946FA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		744D19E227C4D80500C5FA2A /* practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = practice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		744D19E527C4D80500C5FA2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		744D19E727C4D80500C5FA2A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,14 +154,15 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		741A1CF227C4FEA6002484FA /* Model */ = {
+		741A1CF227C4FEA6002484FA /* Constants */ = {
 			isa = PBXGroup;
 			children = (
 				741A1CF327C4FEB4002484FA /* UserInfo.swift */,
 				741A1CEC27C4F169002484FA /* constants.swift */,
 				741A1CF027C4FE93002484FA /* MyError.swift */,
+				740CEFFD27E2D2B100647FC3 /* Ranking.swift */,
 			);
-			path = Model;
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		741A1CF527C4FECC002484FA /* API */ = {
@@ -166,6 +173,7 @@
 				741A1CFC27C4FF3A002484FA /* MyApiStatusLogger.swift */,
 				741A1CFA27C4FF22002484FA /* BaseInterceptor.swift */,
 				741A1CFE27C4FF53002484FA /* MySearchRouter.swift */,
+				740CEFFB27E2D24100647FC3 /* RankingData.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -196,7 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				741A1CF527C4FECC002484FA /* API */,
-				741A1CF227C4FEA6002484FA /* Model */,
+				741A1CF227C4FEA6002484FA /* Constants */,
 				741A1CEA27C4E58C002484FA /* ViewControllers */,
 				744D19E527C4D80500C5FA2A /* AppDelegate.swift */,
 				744D19E727C4D80500C5FA2A /* SceneDelegate.swift */,
@@ -204,6 +212,7 @@
 				744D19F127C4D80600C5FA2A /* Assets.xcassets */,
 				744D19F327C4D80600C5FA2A /* LaunchScreen.storyboard */,
 				744D19F627C4D80600C5FA2A /* Info.plist */,
+				74484E4927E1C94B00E946FA /* GoogleService-Info.plist */,
 				744D19EE27C4D80500C5FA2A /* practice.xcdatamodeld */,
 			);
 			path = practice;
@@ -346,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				744D19F527C4D80600C5FA2A /* LaunchScreen.storyboard in Resources */,
+				74484E4A27E1C94B00E946FA /* GoogleService-Info.plist in Resources */,
 				744D19F227C4D80600C5FA2A /* Assets.xcassets in Resources */,
 				744D19ED27C4D80500C5FA2A /* Main.storyboard in Resources */,
 			);
@@ -489,8 +499,10 @@
 				741A1CF927C4FF08002484FA /* MyLoger.swift in Sources */,
 				741A1CF127C4FE93002484FA /* MyError.swift in Sources */,
 				744D19E627C4D80500C5FA2A /* AppDelegate.swift in Sources */,
+				740CEFFE27E2D2B100647FC3 /* Ranking.swift in Sources */,
 				74FEE59327E08B1E006C1624 /* playerInfoCell.swift in Sources */,
 				741A1CF427C4FEB4002484FA /* UserInfo.swift in Sources */,
+				740CEFFC27E2D24100647FC3 /* RankingData.swift in Sources */,
 				7423593827E1AAF1004C6BAA /* DetailPlayInfoTableViewCell.swift in Sources */,
 				744D19E827C4D80500C5FA2A /* SceneDelegate.swift in Sources */,
 			);

@@ -12,19 +12,16 @@ import Alamofire
 enum MySearchRouter: URLRequestConvertible {
     
     case searchPlayerId(term: String )
-
     case searchMatches(term: String, gameType: String)
+    case searchRank
     
     var baseURL: URL {
-            return URL(string: API.BASE_URL)!
+        return URL(string: API.BASE_URL)!
     }
     
     // API 요청 방식에 따른 request 분기
     var method: HTTPMethod {
-        switch self {
-        case .searchPlayerId, .searchMatches:
-            return .get
-        }
+        return .get
     }
     
     // 엔드포인트 설정
@@ -35,7 +32,12 @@ enum MySearchRouter: URLRequestConvertible {
             
         case let .searchMatches(term, _):
             return "players/\(term)/matches"
+        
+        case .searchRank :
+            return "ranking/ratingpoint"
+            
         }
+        
     }
     
     
@@ -47,15 +49,17 @@ enum MySearchRouter: URLRequestConvertible {
             return ["nickname" : term]
             
         case let .searchMatches(_, gameType) :
-            return ["gameTypeId" : gameType]
+            return ["gameTypeId" : gameType, "limit" : "30"]
+            
+        case .searchRank :
+            return ["limit":"30"]
         }
     }
     
     // throw가 있기 때문에 do catch 없이 try만 써도 된다.
     func asURLRequest() throws -> URLRequest {
         
-        switch self {
-        case .searchPlayerId :
+
             let url = baseURL.appendingPathComponent(endPoint)
             print("MySearchRouter - asURLRequest() searchPlayerId url : \(url)")
             
@@ -65,20 +69,6 @@ enum MySearchRouter: URLRequestConvertible {
             request = try URLEncodedFormParameterEncoder().encode(parameters, into: request)
             
             return request
-            
-        case .searchMatches :
-            let url = baseURL.appendingPathComponent(endPoint)
-        
-            print("MySearchRouter - asURLRequest() searchMatches url : \(url)")
-            
-            var request = URLRequest(url: url)
-            request.method = method
-            
-            request = try URLEncodedFormParameterEncoder().encode(parameters, into: request)
-            
-            return request
-        }
-        
-    
+  
     }
 }

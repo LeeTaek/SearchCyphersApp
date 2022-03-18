@@ -13,6 +13,9 @@ class DetailPlayInfoVC : BaseVC {
 
     var gameTypeId : String = ""
     
+//    let rank = RankingData()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,10 +23,19 @@ class DetailPlayInfoVC : BaseVC {
         DetailPlayInfoTableView.dataSource = self
         
          
-        print("DetailPlayInfoVC - matchDetailInfo : \(matchDetailInfo!)")
-    }
+        print("DetailPlayInfoVC - matchDetailInfo : \(matchDetailInfo!.matchID)")
+        
+        // 데이터베이스 업로드
+//        rank.getFirebaseDatabase()
 
+    }
+    
+    
+
+    
 }
+
+
 
 
 extension DetailPlayInfoVC : UITableViewDelegate, UITableViewDataSource {
@@ -63,19 +75,19 @@ extension DetailPlayInfoVC : UITableViewDelegate, UITableViewDataSource {
         cell.characterName.text = hasMatchinfo.playInfo.characterName
         cell.level.text = "Lv ." +
         hasMatchinfo.playInfo.level.description
-        cell.result.text = hasMatchinfo.playInfo.res.rawValue
+        cell.result.text = hasMatchinfo.playInfo.res
         cell.killCount.text = "Kill \n" +  hasMatchinfo.playInfo.killCount.description
         cell.deathCount.text = "Death \n" + hasMatchinfo.playInfo.deathCount.description
         cell.assistCount.text = "Assist \n" + hasMatchinfo.playInfo.assistCount.description
         cell.position.text = hasMatchinfo.position.name
-        cell.positionDescription.text = "포지션 기본 버프 : " +  hasMatchinfo.position.explain.rawValue
+        cell.positionDescription.text = "포지션 기본 버프 : " +  hasMatchinfo.position.explain
         
         cell.attributeName1.text = hasMatchinfo.position.attribute[0].name
         cell.attributeName2.text = hasMatchinfo.position.attribute[1].name
         cell.attributeName3.text = hasMatchinfo.position.attribute[2].name
         
         // 특성
-        let characterImageURL = URL(string: API.CHARACTER_IMAGE_URL + hasMatchinfo.playInfo.characterID)
+        let characterImageURL = URL(string: API.CHARACTER_IMAGE_URL + hasMatchinfo.playInfo.characterId)
         cell.characterImage.kf.setImage(with: characterImageURL)
         
         let attributeImageURL1 = URL(string: API.ATTRIBUTE_IMAGE_URL + hasMatchinfo.position.attribute[0].id)

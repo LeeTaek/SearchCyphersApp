@@ -8,13 +8,17 @@
 import UIKit
 import Kingfisher
 import Toast_Swift
+import FirebaseAuth
+
 
 class PlayerInfoVC: BaseVC {
     
     @IBOutlet weak var PlayerInfoTableView: UITableView!
     
-    var matchInfo : MatchInfo?
     
+    
+    var matchInfo : MatchInfo?
+    var rankData = [RankRow]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,43 +30,39 @@ class PlayerInfoVC: BaseVC {
         let userNickname = self.vcTitle
 
         getUserID(nickname: userNickname)
+//        getRank()
     }
     
     
     // playerID request
-    func getUserID(nickname : String ) {
-        
+    func getUserID(nickname : String) {
+
         MyAlamofireManager.shared
             .getUserInfo(searchTerm: nickname) { result in
                 switch result {
                 case .success(let playerInfo) :
-                    print("playerInfoVC - getUserID success : playerId : \(playerInfo.playerID)")
+                    print("playerInfoVC - getUserID success : playerId : \(playerInfo.playerId)")
                     
                     self.vcTitle = playerInfo.nickname + "(" + playerInfo.grade.description +  "급)"
-                    let playerId = playerInfo.playerID
+                    let playerId = playerInfo.playerId
                     self.getMatchingInfo(playerId: playerId)
-                    
-                
                     
                 case .failure(let err) :
                     print("playerInfoVC - getUserID failure - error : \(err.rawValue)")
                     self.view.makeToast(err.rawValue, duration: 3.0, position: .center)
-                    
                 }
-            
             }
-        
     }
     
     // 매칭 기록 request
     func getMatchingInfo(playerId : String) {
-        
         MyAlamofireManager.shared
             .getMatchInfo(searchterm: playerId, gameTypeID: "rating") { result in
                 switch result {
                 case .success(let match) :
-                    print("playerInfoVc - getMatchingInfo() success : matchInnfo : \(match)")
+                    print("playerInfoVc - getMatchingInfo() success : matchInnfo.nickname : \(match.nickname)")
                     self.matchInfo = match
+             
                     
                     DispatchQueue.main.async {
                         self.PlayerInfoTableView.reloadData()
@@ -71,10 +71,35 @@ class PlayerInfoVC: BaseVC {
                 case .failure(let error):
                     print("playerInfoVC - getMatchingInfo() failure - error: \(error.rawValue)")
                     self.view.makeToast(error.rawValue, duration: 3.0, position: .center)
-
                 }
             }
     }
+    
+    
+    // firebase에 업로드 하기 위한 함수
+    func getRank() {
+        MyAlamofireManager.shared
+            .getRankData(completion: {result in
+                switch result {
+                case .success(let ran) :
+                    print("RankingData - getRank.success rank.Count: \(ran.count)")
+
+                    self.rankData = ran
+
+                    for i in 0..<self.rankData.count {
+                        
+                        if i%5 == 0 {
+                            Thread.sleep(forTimeInterval: 2)
+                        }
+                        
+                        self.getMatchingInfo(playerId: self.rankData[i].playerID)
+                    }
+                case .failure(let error) :
+                    print("RankingData - failure, error : \(error.rawValue)")
+                }
+            })
+    }
+    
     
     
     // 다음 VC로 matchDetailInfo의 정보를 넘김
@@ -84,11 +109,11 @@ class PlayerInfoVC: BaseVC {
         
         guard let hasMatchData = matchDetailInfo else { return }
         
-        print("playerInfoVC - prepare() matchDetailInfo : \(hasMatchData)")
+        print("playerInfoVC - prepare() matchDetailInfo : \(hasMatchData.matchID)")
 
         
         nextVC.matchDetailInfo = hasMatchData
-        nextVC.gameTypeId = matchInfo?.matches.gameTypeID ?? ""
+        nextVC.gameTypeId = matchInfo?.matches.gameTypeId ?? ""
     }
 }
 
@@ -119,7 +144,7 @@ extension PlayerInfoVC : UITableViewDelegate, UITableViewDataSource {
         
         
         // 셀에 채울 내용
-        switch hasData.matches.gameTypeID {
+        switch hasData.matches.gameTypeId {
         case "rating" :
             cell.gameTypeId.text = "공식전"
             
@@ -135,19 +160,19 @@ extension PlayerInfoVC : UITableViewDelegate, UITableViewDataSource {
         cell.characterName.text = hasMatchinfo.playInfo.characterName
         cell.level.text = "Lv ." +
         hasMatchinfo.playInfo.level.description
-        cell.result.text = hasMatchinfo.playInfo.res.rawValue
+        cell.result.text = hasMatchinfo.playInfo.res
         cell.killCount.text = "Kill \n" +  hasMatchinfo.playInfo.killCount.description
         cell.deathCount.text = "Death \n" + hasMatchinfo.playInfo.deathCount.description
         cell.assistCount.text = "Assist \n" + hasMatchinfo.playInfo.assistCount.description
         cell.position.text = hasMatchinfo.position.name
-        cell.positionDescription.text = "포지션 기본 버프 : " +  hasMatchinfo.position.explain.rawValue
+        cell.positionDescription.text = "포지션 기본 버프 : " +  hasMatchinfo.position.explain
         
         cell.attributeName1.text = hasMatchinfo.position.attribute[0].name
         cell.attributeName2.text = hasMatchinfo.position.attribute[1].name
         cell.attributeName3.text = hasMatchinfo.position.attribute[2].name
         
             
-        let characterImageURL = URL(string: API.CHARACTER_IMAGE_URL + hasMatchinfo.playInfo.characterID)
+        let characterImageURL = URL(string: API.CHARACTER_IMAGE_URL + hasMatchinfo.playInfo.characterId)
         cell.characterImage.kf.setImage(with: characterImageURL)
         
         let attributeImageURL1 = URL(string: API.ATTRIBUTE_IMAGE_URL + hasMatchinfo.position.attribute[0].id)
@@ -175,7 +200,7 @@ extension PlayerInfoVC : UITableViewDelegate, UITableViewDataSource {
         guard let  hasData = matchInfo?.matches.rows[indexPath.row] else {return}
         
         matchDetailInfo = hasData
-        print("PlayerInfoVC - tableView() indexpath.row : \(indexPath.row), matchDetailInfo : \(matchDetailInfo)")
+        print("PlayerInfoVC - tableView() indexpath.row : \(indexPath.row), matchDetailInfo.matchID : \(String(describing: hasData.matchID))")
         
         self.performSegue(withIdentifier: "goToDetailPlayInfoVC", sender: self)
 
