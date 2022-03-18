@@ -44,16 +44,12 @@ struct Matches: Codable {
 
 // MARK: - Row
 struct Row: Codable {
-    let date, matchID: String
+    let date, matchId: String
     let map: Map
     let playInfo: PlayInfo
     let position: Position
 
-    enum CodingKeys: String, CodingKey {
-        case date
-        case matchID = "matchId"
-        case map, playInfo, position
-    }
+   
 }
 
 // MARK: - Map
@@ -122,5 +118,17 @@ extension Encodable {
         }
         
         return dictionary
+    }
+}
+
+
+
+// MARK: - NSDictionary -> data
+extension Decodable {
+        
+    static func decode<T: Decodable>(dictionary : [String:Any]) throws -> T {
+        let data = try JSONSerialization.data(withJSONObject: dictionary, options: [.prettyPrinted])
+        
+        return try JSONDecoder().decode(T.self, from: data)
     }
 }

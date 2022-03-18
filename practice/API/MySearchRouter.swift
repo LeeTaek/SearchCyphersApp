@@ -49,7 +49,7 @@ enum MySearchRouter: URLRequestConvertible {
             return ["nickname" : term]
             
         case let .searchMatches(_, gameType) :
-            return ["gameTypeId" : gameType, "limit" : "30"]
+            return ["gameTypeId" : gameType]
             
         case .searchRank :
             return ["limit":"30"]

@@ -109,11 +109,12 @@ class PlayerInfoVC: BaseVC {
         
         guard let hasMatchData = matchDetailInfo else { return }
         
-        print("playerInfoVC - prepare() matchDetailInfo : \(hasMatchData.matchID)")
+        print("playerInfoVC - prepare() matchDetailInfo : \(hasMatchData.matchId)")
 
         
         nextVC.matchDetailInfo = hasMatchData
         nextVC.gameTypeId = matchInfo?.matches.gameTypeId ?? ""
+        
     }
 }
 
@@ -137,6 +138,7 @@ extension PlayerInfoVC : UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "playerInfoCell", for: indexPath) as! playerInfoCell
     
+   
         
         guard let hasData = matchInfo else { return cell }
     
@@ -184,6 +186,9 @@ extension PlayerInfoVC : UITableViewDelegate, UITableViewDataSource {
         let attributeImageURL3 = URL(string: API.ATTRIBUTE_IMAGE_URL + hasMatchinfo.position.attribute[2].id)
         cell.attributeImage3.kf.setImage(with: attributeImageURL3)
         
+        
+        
+        
                 
         return cell
 
@@ -193,17 +198,16 @@ extension PlayerInfoVC : UITableViewDelegate, UITableViewDataSource {
     // 클릭한 매칭 정보를 matchDetailInfo에 할당 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableView.deselectRow(at: indexPath, animated: true)
-
         
-        // 디테일 뷰로 보낼 매칭 정보
+        // 보낼 데이터
         guard let  hasData = matchInfo?.matches.rows[indexPath.row] else {return}
-        
+     
         matchDetailInfo = hasData
-        print("PlayerInfoVC - tableView() indexpath.row : \(indexPath.row), matchDetailInfo.matchID : \(String(describing: hasData.matchID))")
+        print("PlayerInfoVC - tableView() indexpath.row : \(indexPath.row), matchDetailInfo.matchID : \(String(describing: hasData.matchId))")
         
         self.performSegue(withIdentifier: "goToDetailPlayInfoVC", sender: self)
 
+                
     }
     
       

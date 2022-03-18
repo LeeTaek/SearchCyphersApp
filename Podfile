@@ -18,6 +18,9 @@ target 'practice' do
  pod 'Toast-Swift', '~> 5.0.0'
  pod 'Alamofire', '~> 5.5'
  pod 'Kingfisher', '~> 7.0'
+ pod 'SwiftyJSON', '~> 4.0'
+
+
 
  pod 'Firebase/Database'
  pod 'Firebase/Core'

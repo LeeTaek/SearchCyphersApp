@@ -36,10 +36,13 @@ final class RankingData {
                     
                     print("getFirebaseDatabase() - rankerData.count : \(rankerMatch[0].nickname)")
                     
-                    // 캐릭터 데이터 업로드
-//                    for i in 0..<CharacterId.CHARACTER_ID_ARY.count {
-//                        self.sortCharacterID(CharacterId: CharacterId.CHARACTER_ID_ARY[i], matchData: rankerMatch)
-//                    }
+//                     캐릭터 데이터 업로드
+                    for i in 0..<CharacterId.CHARACTER_ID_ARY.count {
+                        
+                        self.matchDataByCharacter.removeAll()
+                        
+                        self.sortCharacterID(CharacterId: CharacterId.CHARACTER_ID_ARY[i], matchData: rankerMatch)
+                    }
               
                 } catch {
                     print("getFirebaseDatabase() 에러입니당 : \(error.localizedDescription)")
@@ -54,9 +57,10 @@ final class RankingData {
         
         var count = 0
         for i in 0..<30 {
-            for j in 0..<30 {
+            for j in 0..<matchData.count {
+               
                 if matchData[i].matches.rows[j].playInfo.characterId == CharacterId {
-                    
+
                     self.matchDataByCharacter.updateValue(matchData[i].matches.rows[j], forKey: "\(count)")
                     count += 1
                   
@@ -67,17 +71,13 @@ final class RankingData {
         do {
             let rankData = try self.matchDataByCharacter.encode()
         
-            self.database.child("MatchInfoByCaracter/\(CharacterId)").setValue(rankData)
+            self.database.child("MatchInfoByCharacter/\(CharacterId)").setValue(rankData)
             
         } catch {
             print(error)
         }
-      
     }
 
-    
-    
-    
 }
 
 

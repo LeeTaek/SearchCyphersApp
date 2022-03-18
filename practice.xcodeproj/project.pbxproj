@@ -22,6 +22,8 @@
 		741A1CFF27C4FF53002484FA /* MySearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741A1CFE27C4FF53002484FA /* MySearchRouter.swift */; };
 		7423593627E164AC004C6BAA /* DetailPlayInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7423593527E164AC004C6BAA /* DetailPlayInfoVC.swift */; };
 		7423593827E1AAF1004C6BAA /* DetailPlayInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7423593727E1AAF1004C6BAA /* DetailPlayInfoTableViewCell.swift */; };
+		743A16DB27E44CAE006A2B07 /* PlaystyleAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743A16DA27E44CAE006A2B07 /* PlaystyleAnalysis.swift */; };
+		743A16DD27E458FE006A2B07 /* RankerUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743A16DC27E458FE006A2B07 /* RankerUserTableViewCell.swift */; };
 		74484E4A27E1C94B00E946FA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74484E4927E1C94B00E946FA /* GoogleService-Info.plist */; };
 		744D19E627C4D80500C5FA2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D19E527C4D80500C5FA2A /* AppDelegate.swift */; };
 		744D19E827C4D80500C5FA2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744D19E727C4D80500C5FA2A /* SceneDelegate.swift */; };
@@ -74,6 +76,8 @@
 		741A1CFE27C4FF53002484FA /* MySearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySearchRouter.swift; sourceTree = "<group>"; };
 		7423593527E164AC004C6BAA /* DetailPlayInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPlayInfoVC.swift; sourceTree = "<group>"; };
 		7423593727E1AAF1004C6BAA /* DetailPlayInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPlayInfoTableViewCell.swift; sourceTree = "<group>"; };
+		743A16DA27E44CAE006A2B07 /* PlaystyleAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaystyleAnalysis.swift; sourceTree = "<group>"; };
+		743A16DC27E458FE006A2B07 /* RankerUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankerUserTableViewCell.swift; sourceTree = "<group>"; };
 		74484E4927E1C94B00E946FA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		744D19E227C4D80500C5FA2A /* practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = practice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		744D19E527C4D80500C5FA2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 				74FEE59227E08B1E006C1624 /* playerInfoCell.swift */,
 				7423593527E164AC004C6BAA /* DetailPlayInfoVC.swift */,
 				7423593727E1AAF1004C6BAA /* DetailPlayInfoTableViewCell.swift */,
+				743A16DC27E458FE006A2B07 /* RankerUserTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 				741A1CFA27C4FF22002484FA /* BaseInterceptor.swift */,
 				741A1CFE27C4FF53002484FA /* MySearchRouter.swift */,
 				740CEFFB27E2D24100647FC3 /* RankingData.swift */,
+				743A16DA27E44CAE006A2B07 /* PlaystyleAnalysis.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -493,10 +499,12 @@
 				744D19F027C4D80500C5FA2A /* practice.xcdatamodeld in Sources */,
 				741A1CEF27C4F289002484FA /* BaseVC.swift in Sources */,
 				741A1CED27C4F169002484FA /* constants.swift in Sources */,
+				743A16DB27E44CAE006A2B07 /* PlaystyleAnalysis.swift in Sources */,
 				741A1CFF27C4FF53002484FA /* MySearchRouter.swift in Sources */,
 				741A1CFB27C4FF22002484FA /* BaseInterceptor.swift in Sources */,
 				744D19EA27C4D80500C5FA2A /* HomeVC.swift in Sources */,
 				741A1CF927C4FF08002484FA /* MyLoger.swift in Sources */,
+				743A16DD27E458FE006A2B07 /* RankerUserTableViewCell.swift in Sources */,
 				741A1CF127C4FE93002484FA /* MyError.swift in Sources */,
 				744D19E627C4D80500C5FA2A /* AppDelegate.swift in Sources */,
 				740CEFFE27E2D2B100647FC3 /* Ranking.swift in Sources */,

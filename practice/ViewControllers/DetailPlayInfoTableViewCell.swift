@@ -8,11 +8,13 @@
 import UIKit
 
 class DetailPlayInfoTableViewCell: playerInfoCell {
+    
 
     @IBOutlet weak var attackPoint: UILabel!
     @IBOutlet weak var damagedPoint: UILabel!
     @IBOutlet weak var responseTime: UILabel!
     @IBOutlet weak var playstyleComment: UILabel!
+    @IBOutlet weak var deathComment: UILabel!
     
     @IBOutlet weak var getCoin: UILabel!
     @IBOutlet weak var spendCoin: UILabel!
@@ -20,5 +22,8 @@ class DetailPlayInfoTableViewCell: playerInfoCell {
     
     @IBOutlet weak var sentinelKillCount: UILabel!
     @IBOutlet weak var demilisherkillCount: UILabel!
-    @IBOutlet weak var coinSpendComment: UILabel!
+    @IBOutlet weak var getCoinComment: UILabel!
+    @IBOutlet weak var spendCoinComment: UILabel!
+    
+    
 }
