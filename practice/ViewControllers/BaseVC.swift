@@ -18,7 +18,6 @@ class BaseVC: UIViewController{
     }
     
     var matchDetailInfo : Row?
-        
     
     
 }

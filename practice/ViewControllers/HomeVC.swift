@@ -167,8 +167,10 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
         switch sender.selectedSegmentIndex {
         case 0:
             searchBarTitle = "닉네임 "
+            
         case 1:
-            searchBarTitle = "캐릭터 이름"
+            searchBarTitle = "닉네임"
+            
         default:
             searchBarTitle = "닉네임"
         }

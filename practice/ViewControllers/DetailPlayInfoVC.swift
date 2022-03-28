@@ -57,7 +57,7 @@ class DetailPlayInfoVC : BaseVC {
 
             do{
 
-                let jsonData = try JSON(value?.value(forKey: Character)!).rawData()
+                let jsonData = try JSON(value?.value(forKey: Character) ?? [:]).rawData()
 
                 print(jsonData)
                 let characterMatch = try JSONDecoder().decode([Row].self, from: jsonData)
