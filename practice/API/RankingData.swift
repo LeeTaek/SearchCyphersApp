@@ -20,7 +20,8 @@ final class RankingData {
     var matchDataByCharacter = [String : Row]()
     
     let database = Database.database().reference()
-
+    
+    
     // firebase를 통한 ranker 데이터 가져와 데이터에 업로드
     func getFirebaseDatabase() {
             print("getFirebaseDatabase() called ")
@@ -33,6 +34,8 @@ final class RankingData {
                     let jsonData = try JSONSerialization.data(withJSONObject: value, options: .prettyPrinted)
                     
                     let rankerMatch = try JSONDecoder().decode([MatchInfo].self, from: jsonData)
+                    
+                    
                     
                     print("getFirebaseDatabase() - rankerData.count : \(rankerMatch[0].nickname)")
                     
@@ -54,29 +57,55 @@ final class RankingData {
     
     // 캐릭터별로 항목을 Firebase Database에 업로드
     func sortCharacterID(CharacterId : String, matchData : [MatchInfo] ) {
+        var averageRate = [String:Double]()
+        var count  = 0
+        var sumOfKillAssi = 0
+        var sumOfDeath  = 0
+        var getCoin = 0
+        var spendConsumablesCoins = 0
         
-        var count = 0
+        
         for i in 0..<30 {
-            for j in 0..<matchData.count {
+            for j in 0..<matchData[i].matches.rows.count {
                
                 if matchData[i].matches.rows[j].playInfo.characterId == CharacterId {
-
+                    sumOfKillAssi += matchData[i].matches.rows[j].playInfo.killCount + matchData[i].matches.rows[j].playInfo.assistCount
+                    sumOfDeath += matchData[i].matches.rows[j].playInfo.deathCount
+                    getCoin += matchData[i].matches.rows[j].playInfo.getCoin
+                    spendConsumablesCoins += matchData[i].matches.rows[j].playInfo.spendConsumablesCoin
+                    
+                    
                     self.matchDataByCharacter.updateValue(matchData[i].matches.rows[j], forKey: "\(count)")
                     count += 1
-                  
                 }
             }
         }
-        
-        do {
-            let rankData = try self.matchDataByCharacter.encode()
-        
-            self.database.child("MatchInfoByCharacter/\(CharacterId)").setValue(rankData)
+    
+        if !matchDataByCharacter.isEmpty {
+            averageRate.updateValue(Double(sumOfKillAssi) / Double(matchDataByCharacter.count), forKey: "KARate")
+            averageRate.updateValue(Double(sumOfDeath) / Double(matchDataByCharacter.count), forKey: "DRate")
+            averageRate.updateValue(Double(getCoin / matchDataByCharacter.count), forKey: "getCoinRate")
+            averageRate.updateValue(Double(spendConsumablesCoins / matchDataByCharacter.count), forKey: "SCCrate")
+     
             
-        } catch {
-            print(error)
+            
+            do {
+                let rankData = try self.matchDataByCharacter.encode()
+                let averageData =  try averageRate.encode()
+
+                self.database.child("MatchInfoByCharacter/\(CharacterId)/matchingData").setValue(rankData)
+                self.database.child("MatchInfoByCharacter/\(CharacterId)/averageRate").setValue(averageData)
+             
+
+
+            } catch {
+                print(error)
+            }
         }
-    }
+            
+        }
+            
+  
 
 }
 

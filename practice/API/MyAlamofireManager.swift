@@ -14,9 +14,9 @@ final class MyAlamofireManager {
     
     let database = Database.database().reference()
   
-    // firebase 업로드용 변수
-//    var countNum = 0
-//    var RankPlayInfo = [Any]()
+//     firebase 업로드용 변수
+    var countNum = 0
+    var RankPlayInfo = [Any]()
 
     
     // 싱글턴 적용
@@ -80,7 +80,7 @@ final class MyAlamofireManager {
     
     
     //MARK: - getMatchiInfo()
-    func getMatchInfo(searchterm userInput: String, gameTypeID : String ,completion: @escaping (Result<MatchInfo, MyError>) -> Void) {
+    func getMatchInfo(searchterm userInput: String, segmentIndex : Int, gameTypeID : String ,completion: @escaping (Result<MatchInfo, MyError>) -> Void) {
         print("MyAlamofireManager - getMatchInfo() called ")
         
 
@@ -96,14 +96,20 @@ final class MyAlamofireManager {
                         
                         let matchingData = try JSONDecoder().decode(MatchInfo.self, from: JsonData)
 
-                        //  Firebase 업로드
-//                        self.RankPlayInfo.append(res)
-//                        self.countNum += 1
-//
-//                        if self.countNum == 30 {
-//                            self.database.child("Rank").setValue(self.RankPlayInfo)
-//
-//                        }
+                        
+                        //  UserVC 에서 호출할 경우 랭킹데이터 firebase에 업데이트.
+                        if segmentIndex == 1 {
+                            print("update recent Match Data ")
+                            self.database.child("Rank").removeValue()
+                            self.database.child("MatchInfoByCharacter").removeValue()
+                            
+                            self.RankPlayInfo.append(res)
+                            self.countNum += 1
+    
+                            if self.countNum == 30 {
+                                self.database.child("Rank").setValue(self.RankPlayInfo)
+                            }
+                        }
                         
                         completion(.success(matchingData))
                         
@@ -118,7 +124,9 @@ final class MyAlamofireManager {
             })
     }
     
-    // firebase에 업로드 하기 위한 함수
+    
+    
+    // 랭커 리스트 받아옴
     func getRankData(completion: @escaping (Result<[RankRow], MyError>) -> Void) {
         print("MyAlamofireManager - getRankData() called ")
 
@@ -149,5 +157,9 @@ final class MyAlamofireManager {
         })
 
     }
+    
+    
+
+    
 }
 

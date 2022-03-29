@@ -15,10 +15,8 @@ class PlayerInfoVC: BaseVC {
     
     @IBOutlet weak var PlayerInfoTableView: UITableView!
     
-    
-    
+    let segmentIndex = 0 
     var matchInfo : MatchInfo?
-    var rankData = [RankRow]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +28,6 @@ class PlayerInfoVC: BaseVC {
         let userNickname = self.vcTitle
 
         getUserID(nickname: userNickname)
-//        getRank()
     }
     
     
@@ -57,7 +54,7 @@ class PlayerInfoVC: BaseVC {
     // 매칭 기록 request
     func getMatchingInfo(playerId : String) {
         MyAlamofireManager.shared
-            .getMatchInfo(searchterm: playerId, gameTypeID: "rating") { result in
+            .getMatchInfo(searchterm: playerId, segmentIndex: segmentIndex, gameTypeID: "rating") { result in
                 switch result {
                 case .success(let match) :
                     print("playerInfoVc - getMatchingInfo() success : matchInnfo.nickname : \(match.nickname)")
@@ -75,31 +72,7 @@ class PlayerInfoVC: BaseVC {
             }
     }
     
-    
-    // firebase에 업로드 하기 위한 함수
-    func getRank() {
-        MyAlamofireManager.shared
-            .getRankData(completion: {result in
-                switch result {
-                case .success(let ran) :
-                    print("RankingData - getRank.success rank.Count: \(ran.count)")
 
-                    self.rankData = ran
-
-                    for i in 0..<self.rankData.count {
-                        
-                        if i%5 == 0 {
-                            Thread.sleep(forTimeInterval: 2)
-                        }
-                        
-                        self.getMatchingInfo(playerId: self.rankData[i].playerID)
-                    }
-                case .failure(let error) :
-                    print("RankingData - failure, error : \(error.rawValue)")
-                }
-            })
-    }
-    
     
     
     // 다음 VC로 matchDetailInfo의 정보를 넘김

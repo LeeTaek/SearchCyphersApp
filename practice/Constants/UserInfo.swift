@@ -79,6 +79,13 @@ struct PlayInfo: Codable {
     }
 }
 
+struct RankMatchInfo : Codable {
+    let averageRate : [String : Double]
+    let matchingData : [Row]
+    
+}
+
+
 // MARK: - PartyInfo
 struct PartyInfo: Codable {
     let playerId, nickname, characterId, characterName: String

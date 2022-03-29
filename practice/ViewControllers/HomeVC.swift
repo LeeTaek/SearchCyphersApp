@@ -171,6 +171,7 @@ class HomeVC: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate
         case 1:
             searchBarTitle = "닉네임"
             
+            
         default:
             searchBarTitle = "닉네임"
         }
